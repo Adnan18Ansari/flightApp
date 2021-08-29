@@ -259,36 +259,36 @@ def predict():
 
         # Destination
         # Banglore = 0 (not in column)
-        Source = request.form["Destination"]
-        if (Source == 'Cochin'):
+        Destination = request.form["Destination"]
+        if (Destination == 'Cochin'):
             d_Cochin = 1
             d_Delhi = 0
             d_New_Delhi = 0
             d_Hyderabad = 0
             d_Kolkata = 0
         
-        elif (Source == 'Delhi'):
+        elif (Destination == 'Delhi'):
             d_Cochin = 0
             d_Delhi = 1
             d_New_Delhi = 0
             d_Hyderabad = 0
             d_Kolkata = 0
 
-        elif (Source == 'New_Delhi'):
+        elif (Destination == 'New_Delhi'):
             d_Cochin = 0
             d_Delhi = 0
             d_New_Delhi = 1
             d_Hyderabad = 0
             d_Kolkata = 0
 
-        elif (Source == 'Hyderabad'):
+        elif (Destination == 'Hyderabad'):
             d_Cochin = 0
             d_Delhi = 0
             d_New_Delhi = 0
             d_Hyderabad = 1
             d_Kolkata = 0
 
-        elif (Source == 'Kolkata'):
+        elif (Destination == 'Kolkata'):
             d_Cochin = 0
             d_Delhi = 0
             d_New_Delhi = 0
@@ -356,7 +356,8 @@ def predict():
 
         output=round(prediction[0],2)
 
-        return render_template('result.html',prediction_text="Your Flight price is Rs. {}".format(output))
+        return render_template('result.html',prediction_text="Your Flight price from {} to {} using {} airline is Rs. {}"
+                      .format(Source, Destination, airline, output))
 
 
     return render_template("home.html")
